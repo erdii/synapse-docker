@@ -8,11 +8,11 @@ edit this line in the Dockerfile: `ENV SYNAPSE_VERSION yourversionhere`
 ## Volumes
 * `/etc/custom-matrix/`
   * homeserver.yaml
-  * werise.de.log.config
-  * werise.de.signing.key
-  * werise.de.tls.crt
-  * werise.de.tls.dh
-  * werise.de.tls.key
+  * yourdomain.com.log.config
+  * yourdomain.com.signing.key
+  * yourdomain.com.tls.crt
+  * yourdomain.com.tls.dh
+  * yourdomain.com.tls.key
 * `/data/logs`: logging data
 * `/data/media_store`: user uploads
 * `/data/uploads`: ongoing user uploads
@@ -35,8 +35,8 @@ docker cp synapse_cfg/* helper:/etc/custom-matrix/
 # now close the helper container (ctrl + c)
 # and create the production container
 docker run \
-  --link postgres \
-  --link werise-auth \
+  --link postgres-container \
+  --link auth-container-is-optional \
   -p 8008:8008 \
   -p 8448:8448 \
   -v synapse_cfg:/etc/custom-matrix \
@@ -66,6 +66,6 @@ database:
 password_providers:
   - module: "rest_auth_provider.RestAuthProvider"
     config:
-      endpoint: "http://werise-auth:9866"
+      endpoint: "http://auth-container-is-optional:9866"
 ```
 
