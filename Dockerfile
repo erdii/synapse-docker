@@ -16,7 +16,7 @@ RUN curl -s http://matrix.org/packages/debian/repo-key.asc | apt-key add -
 RUN apt-add-repository "deb http://matrix.org/packages/debian xenial main"
 
 # specify wanted synapse version here!
-ENV SYNAPSE_VERSION 0.31.1
+ENV SYNAPSE_VERSION 0.31.1-1
 
 # update repos and install synapse
 RUN apt-get update && apt-get install matrix-synapse=${SYNAPSE_VERSION} libpq-dev python-pip -y && pip install psycopg2
