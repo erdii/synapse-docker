@@ -32,7 +32,7 @@ docker run \
 # now open a new terminal and copy the config and optionally the existing media_store into the config volume
 docker cp synapse_cfg/* helper:/etc/custom-matrix/
 
-# now close the helper container (ctrl + c)
+# now close both containers (ctrl + c)
 # and create the production container
 docker run \
   --link postgres-container \
