@@ -35,4 +35,4 @@ EXPOSE 8448
 EXPOSE 8008
 
 # run synapse in foreground mode
-CMD ["python", "-B", "-m", "synapse.app.homeserver", "-c", "/etc/custom-matrix/homeserver.yaml"]
+CMD ["/opt/venvs/matrix-synapse/bin/python", "-B", "-m", "synapse.app.homeserver", "-c", "/etc/custom-matrix/homeserver.yaml"]
