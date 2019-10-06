@@ -10,13 +10,14 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install curl apt-transport-https software-properties-common git -y
 
 # add matrix repo key
-RUN curl -s http://matrix.org/packages/debian/repo-key.asc | apt-key add -
+RUN curl -s -o /usr/share/keyrings/matrix-org-archive-keyring.gpg https://packages.matrix.org/debian/matrix-org-archive-keyring.gpg
 
 # add matrix repo
-RUN apt-add-repository "deb http://matrix.org/packages/debian xenial main"
+RUN echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main" \
+		| tee /etc/apt/sources.list.d/matrix-org.list
 
 # specify wanted synapse version here!
-ENV SYNAPSE_VERSION 0.99.1.1+xenial1
+ENV SYNAPSE_VERSION 1.4.0+xenial1
 
 # update repos and install synapse
 RUN apt-get update && apt-get install matrix-synapse-py3=${SYNAPSE_VERSION} libpq-dev python-pip -y && pip install psycopg2
