@@ -17,7 +17,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] htt
 		| tee /etc/apt/sources.list.d/matrix-org.list
 
 # specify wanted synapse version here!
-ENV SYNAPSE_VERSION 1.4.0+xenial1
+ENV SYNAPSE_VERSION 1.5.1+xenial1
 
 # update repos and install synapse
 RUN apt-get update && apt-get install matrix-synapse-py3=${SYNAPSE_VERSION} libpq-dev python-pip -y && pip install psycopg2
