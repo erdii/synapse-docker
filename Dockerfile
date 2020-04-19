@@ -26,10 +26,8 @@ RUN apt-get update \
 	&& apt-get install matrix-synapse-py3=${SYNAPSE_VERSION} libpq-dev python-pip -y \
 	&& pip install psycopg2
 
-# add github kamax-io/matrix-synapse-rest-auth to enable custom authentication backends
-RUN curl -s \
-	-o /opt/venvs/matrix-synapse/lib/python3.5/site-packages/rest_auth_provider.py \
-	https://raw.githubusercontent.com/kamax-io/matrix-synapse-rest-auth/v0.1.2/rest_auth_provider.py
+# add patched kamax-io/matrix-synapse-rest-auth to enable custom authentication backends
+ADD files/rest_auth_provider.py /opt/venvs/matrix-synapse/lib/python3.5/site-packages/rest_auth_provider.py
 
 # config and keys
 VOLUME [ "/etc/custom-matrix" ]
