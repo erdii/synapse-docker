@@ -3,4 +3,4 @@ set -euxo pipefail
 SYNAPSE_VERSION="1.13.0+focal1"
 
 IMAGE_REPO="erdii/synapse-build"
-IMAGE_TAG="1.13.0"
+IMAGE_TAG="1.13.0-1"
