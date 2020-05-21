@@ -1,4 +1,7 @@
-FROM ubuntu:xenial
+FROM ubuntu:focal
+
+# specify wanted synapse version here or override by passing --build-arg
+ARG SYNAPSE_VERSION=1.12.3+focal1
 
 # non-interactive mode for building the image
 ARG DEBIAN_FRONTEND=noninteractive
@@ -7,7 +10,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y
 
 # install some basic dependencies
-RUN apt-get install curl apt-transport-https software-properties-common git -y
+RUN apt-get install curl apt-transport-https software-properties-common -y
 
 # add matrix repo key
 RUN curl -s \
@@ -18,13 +21,10 @@ RUN curl -s \
 RUN echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main" \
 	| tee /etc/apt/sources.list.d/matrix-org.list
 
-# specify wanted synapse version here!
-ENV SYNAPSE_VERSION 1.12.3+xenial1
-
 # update repos and install synapse
 RUN apt-get update \
-	&& apt-get install matrix-synapse-py3=${SYNAPSE_VERSION} libpq-dev python-pip -y \
-	&& pip install psycopg2
+	&& apt-get install matrix-synapse-py3=${SYNAPSE_VERSION} libpq-dev python3-pip -y \
+	&& pip3 install psycopg2
 
 # add patched kamax-io/matrix-synapse-rest-auth to enable custom authentication backends
 ADD files/rest_auth_provider.py /opt/venvs/matrix-synapse/lib/python3.5/site-packages/rest_auth_provider.py

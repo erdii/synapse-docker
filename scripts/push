@@ -1,0 +1,5 @@
+#!/bin/bash
+cd `dirname $BASH_SOURCE`
+source _common.source
+
+docker push "${IMAGE_REPO}:${IMAGE_TAG}"
