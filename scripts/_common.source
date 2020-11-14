@@ -1,5 +1,5 @@
 set -euxo pipefail
 
-SYNAPSE_VERSION="1.19.0+focal1"
+SYNAPSE_VERSION="1.19.3+focal1"
 IMAGE_REPO="erdii/synapse-build"
-IMAGE_TAG="1.19.0-1"
+IMAGE_TAG="1.19.3-1"
