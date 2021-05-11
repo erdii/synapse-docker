@@ -2,7 +2,9 @@
 cd `dirname $BASH_SOURCE`
 source _common.source
 
-docker build \
+DOCKER_COMMAND="${DOCKER_COMMAND:-docker}"
+
+$DOCKER_COMMAND build \
     --build-arg SYNAPSE_VERSION="${SYNAPSE_VERSION}" \
     -t "${IMAGE_REPO}:${IMAGE_TAG}" \
     ..

@@ -2,4 +2,6 @@
 cd `dirname $BASH_SOURCE`
 source _common.source
 
-docker push "${IMAGE_REPO}:${IMAGE_TAG}"
+DOCKER_COMMAND="${DOCKER_COMMAND:-docker}"
+
+$DOCKER_COMMAND push "${IMAGE_REPO}:${IMAGE_TAG}"

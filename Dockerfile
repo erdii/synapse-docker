@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 # specify wanted synapse version here or override by passing --build-arg
-ARG SYNAPSE_VERSION=1.19.0+focal1
+ARG SYNAPSE_VERSION=1.33.2+focal1
 
 # non-interactive mode for building the image
 ARG DEBIAN_FRONTEND=noninteractive
