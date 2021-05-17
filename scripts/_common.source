@@ -1,5 +1,5 @@
 set -euxo pipefail
 
-SYNAPSE_VERSION="1.33.2+focal1"
+SYNAPSE_VERSION="1.34.0+focal1"
 IMAGE_REPO="ghcr.io/erdii/synapse-docker"
-IMAGE_TAG="1.33.2-1"
+IMAGE_TAG="1.34.0-1"
