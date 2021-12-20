@@ -1,5 +1,6 @@
 #!/bin/bash
-cd `dirname $BASH_SOURCE`
+set -euxo pipefail
+cd "$(dirname $BASH_SOURCE)"
 source _common.source
 
 DOCKER_COMMAND="${DOCKER_COMMAND:-docker}"
